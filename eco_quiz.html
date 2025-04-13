@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eco Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-side">
+            <img src="cube.jpg" alt="Eco cube">
+        </div>
+        <div class="quiz-side">
+            <h1>🌱 Eco Knowledge Quiz</h1>
+            <form id="quizForm">
+<div class="question"><p><strong>Q1:</strong> Which of the following is a non-renewable resource?</p><div class="options">
+        <label><input type="radio" name="q0" value="Solar energy"> Solar energy</label>
+        <label><input type="radio" name="q0" value="Wind energy"> Wind energy</label>
+        <label><input type="radio" name="q0" value="Natural gas"> Natural gas</label>
+        <label><input type="radio" name="q0" value="Tidal energy"> Tidal energy</label></div></div><div class="question"><p><strong>Q2:</strong> What does biodiversity mainly refer to?</p><div class="options">
+        <label><input type="radio" name="q1" value="Number of people in a region"> Number of people in a region</label>
+        <label><input type="radio" name="q1" value="Variety of life in an ecosystem"> Variety of life in an ecosystem</label>
+        <label><input type="radio" name="q1" value="Number of endangered species"> Number of endangered species</label>
+        <label><input type="radio" name="q1" value="Types of climate"> Types of climate</label></div></div><div class="question"><p><strong>Q3:</strong> Which gas is most responsible for global warming?</p><div class="options">
+        <label><input type="radio" name="q2" value="Oxygen"> Oxygen</label>
+        <label><input type="radio" name="q2" value="Nitrogen"> Nitrogen</label>
+        <label><input type="radio" name="q2" value="Carbon dioxide"> Carbon dioxide</label>
+        <label><input type="radio" name="q2" value="Hydrogen"> Hydrogen</label></div></div><div class="question"><p><strong>Q4:</strong> What is the primary cause of ocean acidification?</p><div class="options">
+        <label><input type="radio" name="q3" value="Oil spills"> Oil spills</label>
+        <label><input type="radio" name="q3" value="Plastic waste"> Plastic waste</label>
+        <label><input type="radio" name="q3" value="Excess CO₂ in the atmosphere"> Excess CO₂ in the atmosphere</label>
+        <label><input type="radio" name="q3" value="Sunscreen chemicals"> Sunscreen chemicals</label></div></div><div class="question"><p><strong>Q5:</strong> Which sector contributes the most to global greenhouse gas emissions?</p><div class="options">
+        <label><input type="radio" name="q4" value="Transportation"> Transportation</label>
+        <label><input type="radio" name="q4" value="Industry"> Industry</label>
+        <label><input type="radio" name="q4" value="Electricity and heat production"> Electricity and heat production</label>
+        <label><input type="radio" name="q4" value="Agriculture"> Agriculture</label></div></div><div class="question"><p><strong>Q6:</strong> Which of the following is a consequence of deforestation?</p><div class="options">
+        <label><input type="radio" name="q5" value="More oxygen in the air"> More oxygen in the air</label>
+        <label><input type="radio" name="q5" value="Increased rainfall"> Increased rainfall</label>
+        <label><input type="radio" name="q5" value="Habitat loss"> Habitat loss</label>
+        <label><input type="radio" name="q5" value="Lower carbon emissions"> Lower carbon emissions</label></div></div><div class="question"><p><strong>Q7:</strong> What is the “carbon footprint”?</p><div class="options">
+        <label><input type="radio" name="q6" value="The number of trees planted"> The number of trees planted</label>
+        <label><input type="radio" name="q6" value="The area of land a person owns"> The area of land a person owns</label>
+        <label><input type="radio" name="q6" value="The total amount of greenhouse gases caused by a person’s activities"> The total amount of greenhouse gases caused by a person’s activities</label>
+        <label><input type="radio" name="q6" value="The steps taken to reduce waste"> The steps taken to reduce waste</label></div></div><div class="question"><p><strong>Q8:</strong> Which of the following is a sustainable practice?</p><div class="options">
+        <label><input type="radio" name="q7" value="Overfishing"> Overfishing</label>
+        <label><input type="radio" name="q7" value="Clear-cutting forests"> Clear-cutting forests</label>
+        <label><input type="radio" name="q7" value="Rotating crops"> Rotating crops</label>
+        <label><input type="radio" name="q7" value="Burning fossil fuels"> Burning fossil fuels</label></div></div>
+            <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let answers = {};
+            for (let i = 0; i < 8; i++) {
+                let radios = document.getElementsByName('q' + i);
+                for (let radio of radios) {
+                    if (radio.checked) {
+                        answers['q' + i] = radio.value;
+                        break;
+                    }
+                }
+            }
+            localStorage.setItem('ecoQuizAnswers', JSON.stringify(answers));
+            alert('Thanks for submitting! Your answers are saved locally.');
+        });
+    </script>
+</body>
+</html>
