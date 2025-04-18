@@ -65,12 +65,22 @@
                 }
             }
 
-            resultBox.innerHTML = `
-                <h2>${score >= 5 ? "You're doing great!" : "You might need to learn more"}</h2>
-                <p>${score >= 5 
-                    ? "You got " + score + " out of 8 correct. Keep up the good work and keep learning about the environment!" 
-                    : "You got " + score + " out of 8 correct. That’s totally okay — every expert starts somewhere. Check out some beginner resources and try again!"}</p>
-            `;
+            if (score === 8) {
+                resultBox.innerHTML = `
+                    <h2>Perfection!</h2>
+                    <p>You got a perfect score: 8 out of 8. Your ecological knowledge is impressive — keep inspiring others too!</p>
+                `;
+            } else if (score >= 5) {
+                resultBox.innerHTML = `
+                    <h2>You're doing great!</h2>
+                    <p>You got ${score} out of 8 correct. Keep up the good work and keep learning about the environment!</p>
+                `;
+            } else {
+                resultBox.innerHTML = `
+                    <h2>You might need to learn more</h2>
+                    <p>You got ${score} out of 8 correct. That’s totally okay — every expert starts somewhere. Check out some beginner resources and try again!</p>
+                `;
+            }
         } else {
             resultBox.innerHTML = `
                 <h2>No answers found.</h2>
