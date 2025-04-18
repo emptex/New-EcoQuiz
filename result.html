@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-image: url('cube.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .result-box h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .result-box p {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box" id="resultBox">
+        <h2>Loading your result...</h2>
+        <p>Please wait.</p>
+    </div>
+
+    <script>
+        const correctAnswers = [
+            "Natural gas",
+            "Variety of life in an ecosystem",
+            "Carbon dioxide",
+            "Excess CO₂ in the atmosphere",
+            "Electricity and heat production",
+            "Habitat loss",
+            "The total amount of greenhouse gases caused by a person’s activities",
+            "Rotating crops"
+        ];
+
+        const stored = localStorage.getItem('ecoQuizAnswers');
+        const resultBox = document.getElementById('resultBox');
+
+        if (stored) {
+            const answers = JSON.parse(stored);
+            let score = 0;
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (answers['q' + i] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            resultBox.innerHTML = `
+                <h2>${score >= 5 ? "You're doing great!" : "You might need to learn more"}</h2>
+                <p>${score >= 5 
+                    ? "You got " + score + " out of 8 correct. Keep up the good work and keep learning about the environment!" 
+                    : "You got " + score + " out of 8 correct. That’s totally okay — every expert starts somewhere. Check out some beginner resources and try again!"}</p>
+            `;
+        } else {
+            resultBox.innerHTML = `
+                <h2>No answers found.</h2>
+                <p>Please complete the quiz first.</p>
+            `;
+        }
+    </script>
+</body>
+</html>
